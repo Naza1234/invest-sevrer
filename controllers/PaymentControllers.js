@@ -1,4 +1,4 @@
-const DB=require('../models/PaymentDetals')
+const DB=require('../models/GetWayDetals')
 
 exports.AddGetWays= async (req,res)=>{
     try {
