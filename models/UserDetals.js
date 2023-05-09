@@ -20,6 +20,16 @@ const UserSchema= mongoose.Schema (
             default : 0,
             require: false
          },
+         UserTotalIncome: {
+            type : Number,
+            default : 0,
+            require: false
+         },
+         UserTotalWithdraw: {
+            type : Number,
+            default : 0,
+            require: false
+         },
          UserInvestedAmount: {
             type : Number,
             default: 0,
