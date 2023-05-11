@@ -8,7 +8,7 @@ const cors = require('cors')
 
 
 app.use(cors({
-    origin : "https://www.nazatech.me"
+    origin : "https://nazatech.me"
 }))
 
 app.use(json());
