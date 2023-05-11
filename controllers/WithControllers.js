@@ -1,4 +1,4 @@
-const DB=require('../models/FundReqDetals')
+const DB=require('../models/WithReqDetals')
 
 exports.AddWith=async (req,res)=>{
     try {
@@ -76,7 +76,7 @@ exports.DeleteSingleWith=async (req,res)=>{
         
 
         const{id}=req.params
-        const data=await DB.findOneAndDelete(id)
+        const data=await DB.findByIdAndDelete(id)
         
         res.status(200).json(data)
 

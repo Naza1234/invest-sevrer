@@ -35,6 +35,9 @@ app.use(json());
     const PaymentRoute = require("./routes/PaymentRoute");
     app.use('/payment',PaymentRoute)  
 
+    const PlaninRoute = require("./routes/PlaninRoute");
+    app.use('/planin',PlaninRoute)  
+
     app.use("/",(req,res)=>{
         res.end('this is the home of the invest.coin server API')
       });

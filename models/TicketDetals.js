@@ -2,12 +2,15 @@ const mongoose=require('mongoose')
 
 const TicketsSchema= mongoose.Schema (
     {
-        
-         UserName: {
+         SendersName: {
+            type:String,
+            require:false
+         },
+         Subject: {
             type : String,
             require: false
          },
-         UserEmail: {
+         Email: {
             type : String,
             require: false
          },

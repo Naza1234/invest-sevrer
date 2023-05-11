@@ -1,12 +1,14 @@
-const DB=require('../models/UserDetals')
+const DB=require('../models/planinDetals')
 
-exports.AddUsers= async(req,res)=>{
+exports.AddPlanin= async (req,res)=>{
     try {
-         
+        
+
         const data=await DB.create(req.body)
 
         res.status(200).json(data)
-      
+
+        
     } catch (error) {
         res.status(500).json({
             message:error.message
@@ -14,12 +16,15 @@ exports.AddUsers= async(req,res)=>{
     }
 }
 
-exports.GetAllUsers= async(req,res)=>{
+exports.GetAllPlanin=async (req,res)=>{
     try {
         
-       const data=await DB.find({})
+        const data=await DB.find({})
         
-       res.status(200).json(data)
+        res.status(200).json(data)
+
+
+
     } catch (error) {
         res.status(500).json({
             message:error.message
@@ -29,13 +34,16 @@ exports.GetAllUsers= async(req,res)=>{
 
 
 
-exports.GetSingleUsers= async (req,res)=>{
+exports.GetSingleplanin=async (req,res)=>{
     try {
+        
+
         const{id}=req.params
         const data=await DB.findById(id)
         
         res.status(200).json(data)
 
+
     } catch (error) {
         res.status(500).json({
             message:error.message
@@ -44,16 +52,17 @@ exports.GetSingleUsers= async (req,res)=>{
 }
 
 
-exports.UpdateSingleUsers=async (req,res)=>{
+exports.UpdateSinglePlanin=async (req,res)=>{
     try {
         
-
         const{id}=req.params
         const data=await DB.findByIdAndUpdate(id,req.body)
         
         res.status(200).json(data)
 
 
+
+
     } catch (error) {
         res.status(500).json({
             message:error.message
@@ -62,7 +71,7 @@ exports.UpdateSingleUsers=async (req,res)=>{
 }
 
 
-exports.DeleteSingleUsers= async(req,res)=>{
+exports.DeleteSingleplanin=async (req,res)=>{
     try {
         
 

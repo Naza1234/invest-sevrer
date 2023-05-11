@@ -73,7 +73,7 @@ exports.DeleteSinglePlan=async (req,res)=>{
     try {
         
         const{id}=req.params
-        const data=await DB.findOneAndDelete(id)
+        const data=await DB.findByIdAndDelete(id)
         
         res.status(200).json(data)
 

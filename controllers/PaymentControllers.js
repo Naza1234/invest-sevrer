@@ -76,7 +76,7 @@ exports.DeleteSingleGetWay=async (req,res)=>{
         
 
         const{id}=req.params
-        const data=await DB.findOneAndDelete(id)
+        const data=await DB.findByIdAndDelete(id)
         
         res.status(200).json(data)
 

@@ -15,12 +15,6 @@ const PlansSchema= mongoose.Schema (
             type : String,
             require: false
          },
-         TotalInterest: {
-            type : Number,
-            default : 0,
-            require: false
-         },
-        
     },
     {
         timestamps: true
