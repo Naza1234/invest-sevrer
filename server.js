@@ -38,6 +38,9 @@ app.use(json());
     const PlaninRoute = require("./routes/PlaninRoute");
     app.use('/planin',PlaninRoute)  
 
+    const emailRoute = require("./routes/emailRoute");
+    app.use('/email',emailRoute)  
+
     app.use("/",(req,res)=>{
         res.end('this is the home of the invest.coin server API')
       });
