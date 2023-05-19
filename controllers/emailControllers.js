@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer')
+require('dotenv').config()
  const sgMail=require ('@sendgrid/mail')
 exports.SendMail= async(req,res)=>{
     try {  
@@ -181,25 +182,50 @@ exports.SendMail= async(req,res)=>{
 
 </html>
          `
-		
-		const APIKEY="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"
-        sgMail.setApiKey(APIKEY)
-
-		const message = {
-			from: 'activationcade@gmail.com', // sender address
-			to:req.body.email, // list of receivers
-			subject: "verification code from invest.coin", // Subject line
-			html:html, 
-		}
-		sgMail.send(message).then((data)=>{
-			res.status(200).json({
-					   code:otp
-				  })
-		}).catch((error)=>{
-			res.status(500).json({
-				      message:error
-				   })
+		 const APIKEY=process.env.EMAIL_AIP_KEY
+		var transporter = nodemailer.createTransport({
+			service: "gmail",
+			auth: {
+				user : "activationcade@gmail.com",
+				pass: APIKEY
+			}
 		})
+		const message = {
+				from: 'activationcade@gmail.com', // sender address
+				to:req.body.email, // list of receivers
+				subject: "verification code from invest.coin", // Subject line
+				html:html, 
+			}
+			transporter.sendMail(message,(error,info)=>{
+				if(error){
+					res.status(500).json({
+								      message:error
+							   })
+				}else{
+					res.status(200).json({
+									   code:otp
+								  })
+				}
+				
+			})
+		// const APIKEY=process.env.EMAIL_AIP_KEY
+        // sgMail.setApiKey(APIKEY)
+        // console.log(APIKEY);
+		// const message = {
+		// 	from: 'activationcade@gmail.com', // sender address
+		// 	to:req.body.email, // list of receivers
+		// 	subject: "verification code from invest.coin", // Subject line
+		// 	html:html, 
+		// }
+		// sgMail.send(message).then((data)=>{
+		// 	res.status(200).json({
+		// 			   code:otp
+		// 		  })
+		// }).catch((error)=>{
+		// 	res.status(500).json({
+		// 		      message:error
+		// 		   })
+		// })
         
     } catch (error) {
         res.status(500).json({

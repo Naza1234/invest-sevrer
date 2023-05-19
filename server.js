@@ -1,24 +1,31 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
-const { json } = require("express");
+
 const cors = require('cors')
+// const bodyParser = require('body-parser')
+// // ...
 
 
 
+// app.use(bodyParser())
 
-app.use(cors({
-    origin : "http://127.0.0.1:5500"
-}))
 
-app.use(json());
 
+app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use("/image",express.static("./image"))
 
 
     // All Routes in this API
 
     const UserRoute = require("./routes/UserRoutes");
     app.use("/user",UserRoute)  
+
+    const UserIDRoute = require("./routes/userIDRoute");
+    app.use("/userid",UserIDRoute)  
 
     const PlanRoute = require("./routes/PlansRoute");
     app.use('/plan',PlanRoute)  

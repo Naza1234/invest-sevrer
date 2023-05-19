@@ -35,6 +35,15 @@ const UserSchema= mongoose.Schema (
             default: 0,
             require: false
          },
+         IDalt: {
+            type : Boolean,
+            default: false
+         },
+        
+         IDsent: {
+            type : Boolean,
+            default: false
+         },
         
     },
     {
