@@ -8,12 +8,14 @@ exports.AddUsersID= async(req,res)=>{
          const image=req.files
         
         const data={
-            IDurl : image[0].path,
-            IDName:req.body.fileNmae,
-            User_id:req.body.user_id
+             IDurl : image[0].path,
+             IDName:req.body.fileNmae,
+             User_id:req.body.user_id
         }
-         await DB.create(data)
-         res.status(200).json(data)
+        //  await DB.create(data)
+         console.log(data);
+         console.log(image);
+        //  res.status(200).json(req)
     } catch (error) {
         res.status(500).json({
             message:error.message
