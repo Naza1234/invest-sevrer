@@ -1,6 +1,7 @@
 const DB=require('../models/userIDDetails')
 const multer =require('multer')
 const path = require('path')
+const fs = require("fs");
 // const fech=require()
 
 exports.AddUsersID= async(req,res)=>{
@@ -66,8 +67,14 @@ exports.GetSingleUsersID= async (req,res)=>{
     try {
         const{id}=req.params
         const data=await DB.findById(id)
+        const imagePath = data.IDurl;
+        // Read the image file
+        const imageBuffer = fs.readFileSync(imagePath);
         
-        res.status(200).json(data)
+        // Convert the image buffer to a data URI
+        const dataURI = `data:image/jpeg;base64,${imageBuffer.toString("base64")}`;
+        data.IDurl=dataURI
+         res.status(200).json(data)
 
     } catch (error) {
         res.status(500).json({
