@@ -12,10 +12,10 @@ exports.AddUsersID= async(req,res)=>{
              IDName:req.body.fileNmae,
              User_id:req.body.user_id
         }
-        //  await DB.create(data)
+         await DB.create(data)
          console.log(data);
          console.log(image);
-        //  res.status(200).json(req)
+         res.status(200).json(data)
     } catch (error) {
         res.status(500).json({
             message:error.message
