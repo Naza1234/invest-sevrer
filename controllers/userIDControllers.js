@@ -9,13 +9,11 @@ exports.AddUsersID= async(req,res)=>{
          const image=req.files
         
         const data={
-             IDurl : image[0].path,
+             IDurl : `./image/${image[0].filename}`,
              IDName:req.body.fileNmae,
              User_id:req.body.user_id
         }
          await DB.create(data)
-         console.log(data);
-         console.log(image);
          res.status(200).json(data)
     } catch (error) {
         res.status(500).json({
@@ -74,12 +72,14 @@ exports.GetSingleUsersID= async (req,res)=>{
         // Convert the image buffer to a data URI
         const dataURI = `data:image/jpeg;base64,${imageBuffer.toString("base64")}`;
         data.IDurl=dataURI
+        
          res.status(200).json(data)
 
     } catch (error) {
         res.status(500).json({
             message:error.message
           }) 
+          console.log( data.IDurl);
     }
 }
 
