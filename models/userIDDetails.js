@@ -15,6 +15,11 @@ const UserIDSchema= mongoose.Schema (
             type : String,
             require: false
          },
+         Seen: {
+            type : Boolean,
+            default: false,
+            require: false
+         },
     },
     {
         timestamps: true
