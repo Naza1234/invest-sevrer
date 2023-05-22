@@ -11,7 +11,7 @@ exports.SendMail= async(req,res)=>{
 		  otp += digits[Math.floor(Math.random() * 10)];
 		}
         let html =`
-             <!DOCTYPE html>
+		<!DOCTYPE html>
 <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
 
 <head>
@@ -54,7 +54,7 @@ exports.SendMail= async(req,res)=>{
 			display: none;
 		}
 
-		@media (max-width:520px) {
+		@media (max-width:620px) {
 			.desktop_hide table.icons-inner {
 				display: inline-block !important;
 			}
@@ -94,15 +94,24 @@ exports.SendMail= async(req,res)=>{
 				max-height: none !important;
 			}
 
-			.row-1 .column-1 .block-1.heading_block h1 {
-				font-size: 40px !important;
+			.row-1 .column-1 .block-1.heading_block h1,
+			.row-1 .column-1 .block-4.paragraph_block td.pad>div {
+				font-size: 14px !important;
+			}
+
+			.row-1 .column-1 .block-3.heading_block h1 {
+				font-size: 18px !important;
+			}
+
+			.row-1 .column-1 .block-2.paragraph_block td.pad>div {
+				font-size: 15px !important;
 			}
 		}
 	</style>
 </head>
 
-<body style="background-color: #FFFFFF; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
-	<table class="nl-container" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF;">
+<body style="background-color: #ffffff; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
+	<table class="nl-container" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;">
 		<tbody>
 			<tr>
 				<td>
@@ -110,30 +119,43 @@ exports.SendMail= async(req,res)=>{
 						<tbody>
 							<tr>
 								<td>
-									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 0; color: #000000; width: 500px;" width="500">
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px;" width="600">
 										<tbody>
 											<tr>
-												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; vertical-align: middle; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
-													<table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
+													<table class="heading_block block-1" width="100%" border="0" cellpadding="10" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
-															<td class="pad" style="text-align:center;width:100%;">
-																<h1 style="margin: 0; color: #0900a5; direction: ltr; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 47px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Welcom to the woldes leading investment platform.</span></h1>
+															<td class="pad">
+																<h1 style="margin: 0; color: #0900a5; direction: ltr; font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Dear [${req.body.name}],</span></h1>
 															</td>
 														</tr>
 													</table>
 													<table class="paragraph_block block-2" width="100%" border="0" cellpadding="10" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad">
-																<div style="color:#5f5c5c;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:19px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:center;mso-line-height-alt:28.5px;">
-																	<p style="margin: 0;"><strong>This is the verification code for from invest.coin. Pleas copy it and finish up with your registration thank you.</strong></p>
+																<div style="color:#101112;direction:ltr;font-family:Arial, Helvetica, sans-serif;font-size:20px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:24px;">
+																	<p style="margin: 0; margin-bottom: 16px;">Thank you for registering for an account on INVEST.COIN.</p>
+																	<p style="margin: 0;">To verify your account, please enter the following code in the verification field on the INVEST.COIN website:</p>
 																</div>
 															</td>
 														</tr>
 													</table>
 													<table class="heading_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
-															<td class="pad" style="text-align:center;width:100%;">
-																<h1 style="margin: 0; color: #0900a5; direction: ltr; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 48px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">${otp}</span></h1>
+															<td class="pad" style="padding-bottom:30px;padding-left:10px;padding-right:10px;padding-top:30px;text-align:center;width:100%;">
+																<h1 style="margin: 0; color: #0900a5; direction: ltr; font-family: Arial, Helvetica, sans-serif; font-size: 21px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">[${otp}]</span></h1>
+															</td>
+														</tr>
+													</table>
+													<table class="paragraph_block block-4" width="100%" border="0" cellpadding="10" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad">
+																<div style="color:#101112;direction:ltr;font-family:Arial, Helvetica, sans-serif;font-size:20px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:24px;">
+																	<p style="margin: 0; margin-bottom: 16px;">This code is valid for 15 minutes. If you do not enter the code within 15 minutes, you will need to request a new code.</p>
+																	<p style="margin: 0; margin-bottom: 16px;">If you have any questions, please do not hesitate to contact us.</p>
+																	<p style="margin: 0; margin-bottom: 16px;">Sincerely,</p>
+																	<p style="margin: 0;">The <strong>INVEST.COIN</strong> Team</p>
+																</div>
 															</td>
 														</tr>
 													</table>
@@ -149,7 +171,7 @@ exports.SendMail= async(req,res)=>{
 						<tbody>
 							<tr>
 								<td>
-									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 500px;" width="500">
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px;" width="600">
 										<tbody>
 											<tr>
 												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
@@ -161,6 +183,10 @@ exports.SendMail= async(req,res)=>{
 																		<td class="alignment" style="vertical-align: middle; text-align: center;"><!--[if vml]><table align="left" cellpadding="0" cellspacing="0" role="presentation" style="display:inline-block;padding-left:0px;padding-right:0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;"><![endif]-->
 																			<!--[if !vml]><!-->
 																			<table class="icons-inner" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;" cellpadding="0" cellspacing="0" role="presentation"><!--<![endif]-->
+																				<tr>
+																					<td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 6px;"><a href="https://www.designedwithbee.com/?utm_source=editor&utm_medium=bee_pro&utm_campaign=free_footer_link" target="_blank" style="text-decoration: none;"><img class="icon" alt="Designed with BEE" src="https://d1oco4z2z1fhwp.cloudfront.net/assets/bee.png" height="32" width="34" align="center" style="display: block; height: auto; margin: 0 auto; border: 0;"></a></td>
+																					<td style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #9d9d9d; vertical-align: middle; letter-spacing: undefined; text-align: center;"><a href="https://www.designedwithbee.com/?utm_source=editor&utm_medium=bee_pro&utm_campaign=free_footer_link" target="_blank" style="color: #9d9d9d; text-decoration: none;">Designed with BEE</a></td>
+																				</tr>
 																			</table>
 																		</td>
 																	</tr>
@@ -183,7 +209,7 @@ exports.SendMail= async(req,res)=>{
 </body>
 
 </html>
-         `
+		`
 		 const APIKEY=process.env.EMAIL_AIP_KEY
 		var transporter = nodemailer.createTransport({
 			service: "gmail",

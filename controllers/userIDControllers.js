@@ -7,13 +7,19 @@ const fs = require("fs");
 exports.AddUsersID= async(req,res)=>{
     try {
          const image=req.files
-        
-        const data={
-             IDurl : `./image/${image[0].filename}`,
+         const imagePath = `./image/${image[0].filename}`;
+         // Read the image file
+         const imageBuffer = fs.readFileSync(imagePath);
+         
+         // Convert the image buffer to a data URI
+         const dataURI = `data:image/jpeg;base64,${imageBuffer.toString("base64")}`;
+         const data={
+             IDurl : "",
              IDName:req.body.fileNmae,
              User_id:req.body.user_id
-        }
-         await DB.create(data)
+            }
+            data.IDurl=dataURI
+          await DB.create(data)
          res.status(200).json(data)
     } catch (error) {
         res.status(500).json({
@@ -65,13 +71,7 @@ exports.GetSingleUsersID= async (req,res)=>{
     try {
         const{id}=req.params
         const data=await DB.findById(id)
-        const imagePath = data.IDurl;
-        // Read the image file
-        const imageBuffer = fs.readFileSync(imagePath);
-        
-        // Convert the image buffer to a data URI
-        const dataURI = `data:image/jpeg;base64,${imageBuffer.toString("base64")}`;
-        data.IDurl=dataURI
+      
         
          res.status(200).json(data)
 
